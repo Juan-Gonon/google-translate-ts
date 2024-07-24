@@ -2,17 +2,18 @@ import React from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useStore } from './hooks/useStore'
-import { Container, Row, Col, Button, Form, Stack } from 'react-bootstrap'
+import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
 import { AUTO_LANGUAGE } from './constants'
 import { ArrowsIcon } from './components/Icons'
 import { LanguageSelector } from './components/LanguageSelecter'
 import { SectionType } from './types/types.d'
+import { TextArea } from './components/TextArea'
 
 
 
 function App():React.JSX.Element {
 
-  const { fromLanguage, toLanguage, interChangeLanguages, setFromLanguages, setToLanguage } = useStore()
+  const { fromLanguage, loading, setFromText, setResult, fromText, result, toLanguage, interChangeLanguages, setFromLanguages, setToLanguage } = useStore()
 
 
   return (
@@ -28,13 +29,10 @@ function App():React.JSX.Element {
               value={fromLanguage}
               />
 
-              <Form.Control
-              as='textarea'
-              placeholder='Introducir texto'
-              autoFocus
-              style={{
-                height: '150px'
-              }}
+              <TextArea
+              type={SectionType.From}
+              value={fromText}
+              onChange={setFromText}
               />
 
           </Stack >
@@ -52,12 +50,11 @@ function App():React.JSX.Element {
             value={toLanguage}
             onChange={setToLanguage} /
             >
-            <Form.Control
-            as='textarea'
-            placeholder='Traducción'
-            style={{
-              height: '150px'
-            }}
+            <TextArea
+            loading={loading}
+            type={SectionType.To}
+            value={result}
+            onChange={setResult}
             />
           </Stack >
 
