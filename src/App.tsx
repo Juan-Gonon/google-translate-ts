@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import type { State } from './types/types'
+import type { State, Action } from './types/types'
 
 const initialState:State = {
   fromLanguage : 'auto',
@@ -11,9 +11,9 @@ const initialState:State = {
   loading: false
 }
 
-function reducer(state: State, action){
+function reducer(state: State, action:Action){
 
-  const { type, payload } = action
+  const { type } = action
 
   if(type === 'INTERCHANGE_LANGUAGES'){
 
@@ -28,7 +28,7 @@ function reducer(state: State, action){
 
     return {
       ...state,
-      fromLanguage: payload
+      fromLanguage: action.payload
     }
   }
 
@@ -36,7 +36,7 @@ function reducer(state: State, action){
     
     return {
       ...state,
-      toLanguage: payload
+      toLanguage: action.payload
     }
   }
 
@@ -45,7 +45,7 @@ function reducer(state: State, action){
     return {
       ...state,
       loading: true,
-      fromText: payload,
+      fromText: action.payload,
       result: ''
     }
   }
@@ -55,7 +55,7 @@ function reducer(state: State, action){
     return {
       ...state,
       loading: false,
-      result: payload
+      result: action.payload
     }
   }
 
