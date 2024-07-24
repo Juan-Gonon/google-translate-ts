@@ -5,12 +5,13 @@ import { useStore } from './hooks/useStore'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { AUTO_LANGUAGE } from './constants'
 import { ArrowsIcon } from './components/Icons'
+import { LanguageSelector } from './components/LanguageSelecter'
 
 
 
 function App():React.JSX.Element {
 
-  const { fromLanguage, toLanguage, interChangeLanguages } = useStore()
+  const { fromLanguage, toLanguage, interChangeLanguages, setFromLanguages, setToLanguage } = useStore()
 
 
   return (
@@ -19,8 +20,8 @@ function App():React.JSX.Element {
       <h1>Google Translate</h1>
       <Row>
         <Col>
-          <h2>From</h2>
-          <h3>{fromLanguage}</h3>
+        <LanguageSelector onChange={setFromLanguages} />
+        {toLanguage}
         </Col>
         <Col >
           <Button variant='link' disabled={fromLanguage === AUTO_LANGUAGE} onClick={interChangeLanguages} >
@@ -28,8 +29,8 @@ function App():React.JSX.Element {
             </Button>
         </Col>
         <Col>
-          <h2>To</h2>
-          <h3>{toLanguage}</h3>
+        <LanguageSelector onChange={setToLanguage} />
+        {toLanguage}
         </Col>
       </Row>
       
