@@ -1,5 +1,5 @@
 import { useReducer } from "react"
-import type { State, Action } from "../types/types"
+import type { State, Action, Language, FromLanguage } from "../types/types"
 
 const initialState:State = {
     fromLanguage : 'auto',
@@ -71,19 +71,19 @@ const initialState:State = {
         dispatch({type: 'INTERCHANGE_LANGUAGES' })
     }
 
-    const setFromLanguages = (payload) => {
+    const setFromLanguages = (payload: FromLanguage) => {
         dispatch({ type: 'SET_FROM_LANGUAGE', payload})
     }
 
-    const setToLanguage = (payload) => {
+    const setToLanguage = (payload: Language) => {
         dispatch({type: 'SET_TO_LANGUAGE', payload})
     }
 
-    const setFromText = (payload) => {
+    const setFromText = (payload: Language) => {
         dispatch({type: 'SET_FROM_TEXT', payload})
     }
 
-    const setResult = (payload) => {
+    const setResult = (payload: Language) => {
         dispatch({ type: 'SET_RESULT', payload})
     }
 
