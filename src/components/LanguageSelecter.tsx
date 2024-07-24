@@ -1,15 +1,15 @@
 import Form from 'react-bootstrap/Form';
 import React from 'react';
 import { SUPPORTED_LANGUAGES } from '../constants';
-import { FromLanguage, Language } from '../types/types';
+import { type FromLanguage, type Language, SectionType } from '../types/types.d';
 
 // interface Props{
 //     onChange:  (language: Language) => void
 // }
 
 type Props = 
-    | { type: 'from', value: FromLanguage, onChange: (language: FromLanguage) => void }
-    | { type: 'to', value: Language, onChange: (language: Language) => void }
+    | { type: SectionType.From, value: FromLanguage, onChange: (language: FromLanguage) => void }
+    | { type: SectionType.To, value: Language, onChange: (language: Language) => void }
 
 export function LanguageSelector({ onChange, type, value }: Props):React.JSX.Element {
 
@@ -19,7 +19,7 @@ export function LanguageSelector({ onChange, type, value }: Props):React.JSX.Ele
   return (
     <Form.Select aria-label="Selecciona el idioma" onChange={handleChange} value={value} >
         {
-            type === 'from' && (<option value='auto'>Detectar idioma</option> )
+            type === SectionType.From && (<option value='auto'>Detectar idioma</option> )
         }
         {
             Object.entries(SUPPORTED_LANGUAGES)

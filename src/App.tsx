@@ -6,6 +6,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import { AUTO_LANGUAGE } from './constants'
 import { ArrowsIcon } from './components/Icons'
 import { LanguageSelector } from './components/LanguageSelecter'
+import { SectionType } from './types/types.d'
 
 
 
@@ -21,7 +22,7 @@ function App():React.JSX.Element {
       <Row>
         <Col>
         <LanguageSelector 
-        type= 'from'
+        type= {SectionType.From}
         onChange={setFromLanguages} 
         value={fromLanguage}
         />
@@ -34,7 +35,7 @@ function App():React.JSX.Element {
         </Col>
         <Col>
         <LanguageSelector 
-        type='to'
+        type={SectionType.To}
         value={toLanguage}
         onChange={setToLanguage} /
         >
