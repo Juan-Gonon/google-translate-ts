@@ -2,21 +2,34 @@ import React from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useStore } from './hooks/useStore'
+import { Container, Row, Col } from 'react-bootstrap'
 
 
 
 function App():React.JSX.Element {
 
-  const { fromLanguage, setFromLanguages } = useStore()
+  const { fromLanguage, toLanguage, interChangeLanguages } = useStore()
 
 
   return (
     <>
-    <div className="app">
+    <Container fluid>
       <h1>Google Translate</h1>
-      <h3>{fromLanguage}</h3>
-      <button onClick={() => setFromLanguages('en')} >Cambiar a Es</button>
-    </div>
+      <Row>
+        <Col>
+          <h2>From</h2>
+          <h3>{fromLanguage}</h3>
+        </Col>
+        <Col >
+          <button onClick={interChangeLanguages} >intercambiar</button>
+        </Col>
+        <Col>
+          <h2>To</h2>
+          <h3>{toLanguage}</h3>
+        </Col>
+      </Row>
+      
+    </Container>
 
     </>
   )
