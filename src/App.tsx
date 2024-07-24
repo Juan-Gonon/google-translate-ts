@@ -20,8 +20,12 @@ function App():React.JSX.Element {
       <h1>Google Translate</h1>
       <Row>
         <Col>
-        <LanguageSelector onChange={setFromLanguages} />
-        {toLanguage}
+        <LanguageSelector 
+        type= 'from'
+        onChange={setFromLanguages} 
+        value={fromLanguage}
+        />
+        {fromLanguage}
         </Col>
         <Col >
           <Button variant='link' disabled={fromLanguage === AUTO_LANGUAGE} onClick={interChangeLanguages} >
@@ -29,7 +33,11 @@ function App():React.JSX.Element {
             </Button>
         </Col>
         <Col>
-        <LanguageSelector onChange={setToLanguage} />
+        <LanguageSelector 
+        type='to'
+        value={toLanguage}
+        onChange={setToLanguage} /
+        >
         {toLanguage}
         </Col>
       </Row>
